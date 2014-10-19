@@ -1,1 +1,3 @@
-from data.data import x_train, x_test, y_train, y_test
+from data.d import x_train, x_test, y_train, y_test
+
+__all__ = [x_train, x_test, y_train, y_test]
