@@ -25,7 +25,7 @@ class NeuralNetwork():
         :return: None
         """
         order = [i for i in range(60000)]
-        for i in range(15):
+        for i in range(10):
             np.random.shuffle(order)
             count = 0
             print('Iteration Times:')
@@ -62,8 +62,6 @@ class NeuralNetwork():
                 #mini-Batch
                 if count == 19:
                     count = 0
-                    weight_gradient_ho_accu = np.divide(weight_gradient_ho_accu, 20)
-                    weight_gradient_ih_accu = np.divide(weight_gradient_ih_accu, 20)
                     self.weight_ho = self.weight_ho - weight_gradient_ho_accu
                     self.weight_ih = self.weight_ih - weight_gradient_ih_accu
                     weight_gradient_ih_accu = np.zeros((self.n_input + 1, self.n_hidden))
@@ -92,7 +90,7 @@ class NeuralNetwork():
             h_out = np.hstack((list(map(self.sigmoid, h_in)), np.array(1)))
             o_in = np.dot(np.transpose(self.weight_ho), h_out)
             o_out = list(map(self.sigmoid, o_in))
-            #print(o_out)
+            print(o_out)
             #y = list(map(self.thresh, o_out))
             #y = np.dot(y, [i for i in range(10)])
             y_re = np.argmax(o_out)
